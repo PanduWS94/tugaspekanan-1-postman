@@ -1,0 +1,671 @@
+{
+	"info": {
+		"_postman_id": "a8d4a221-b469-4271-845a-fe8b912a3d59",
+		"name": "QAA 53 Pandu Tugas 1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21402943"
+	},
+	"item": [
+		{
+			"name": "Registration",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"pm.test(\"Berhasil daftar gaes\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Toko berhasil didaftarkan\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"name\": \"Pandumart\",\r\n   \"email\": \"pandumart@gmail.com\",\r\n   \"password\": \"123321saja\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://kasir-api.belajarqa.com/registration",
+					"protocol": "https",
+					"host": [
+						"kasir-api",
+						"belajarqa",
+						"com"
+					],
+					"path": [
+						"registration"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"pm.test(\"Dapat status berhasil\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.status).to.eql(\"success\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.sendRequest\r",
+							"(\r",
+							"{\r",
+							"    url: 'https://kasir-api.belajarqa.com/authentications',\r",
+							"    method: 'POST',\r",
+							"    header: \r",
+							"    {\r",
+							"        'Content-Type': 'application/json'\r",
+							"    },\r",
+							"    body: \r",
+							"    {\r",
+							"        mode: 'raw',\r",
+							"        raw: JSON.stringify\r",
+							"        ({\r",
+							"            email: pm.environment.get('emailAdmin'),\r",
+							"            password: pm.environment.get('passwordAdmin')\r",
+							"        })\r",
+							"    }\r",
+							"}, \r",
+							"function (err, res) \r",
+							"{\r",
+							"    if (err) \r",
+							"    {\r",
+							"        console.error(err);\r",
+							"        return;\r",
+							"    }\r",
+							"    var jsonData = res.json();\r",
+							"    var accessToken = jsonData.data.accessToken;\r",
+							"    var refreshToken = jsonData.data.refreshToken;\r",
+							"    \r",
+							"    pm.environment.set(\"accessToken\", accessToken);\r",
+							"    pm.environment.set(\"refreshToken\", refreshToken);\r",
+							"    \r",
+							"}\r",
+							");\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"email\": \"{{emailAdmin}}\",\r\n   \"password\": \"{{passwordAdmin}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://kasir-api.belajarqa.com/authentications",
+					"protocol": "https",
+					"host": [
+						"kasir-api",
+						"belajarqa",
+						"com"
+					],
+					"path": [
+						"authentications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.sendRequest\r",
+							"(\r",
+							"{\r",
+							"    url: 'https://kasir-api.belajarqa.com/authentications',\r",
+							"    method: 'POST',\r",
+							"    header: \r",
+							"    {\r",
+							"        'Content-Type': 'application/json'\r",
+							"    },\r",
+							"    body: \r",
+							"    {\r",
+							"        mode: 'raw',\r",
+							"        raw: JSON.stringify\r",
+							"        ({\r",
+							"            email: pm.environment.get('emailAdmin'),\r",
+							"            password: pm.environment.get('passwordAdmin')\r",
+							"        })\r",
+							"    }\r",
+							"}, function (err, res) {\r",
+							"    if (err) {\r",
+							"        console.error(\"Error:\", err);\r",
+							"        return;\r",
+							"    }\r",
+							"    \r",
+							"    \r",
+							"        var jsonData = res.json();\r",
+							"        var accessToken = jsonData.data.accessToken;\r",
+							"        pm.environment.set(\"accessToken\", accessToken)\r",
+							"        \r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"pm.test(\"Statusnya Sukses\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.status).to.eql(\"success\");\r",
+							"});\r",
+							"\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"userId\", jsonData.data.userId);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"name\": \"Pandu\",\r\n   \"email\": \"panduws345@gmail.com\",\r\n   \"password\": \"123321saja\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://kasir-api.belajarqa.com/users",
+					"protocol": "https",
+					"host": [
+						"kasir-api",
+						"belajarqa",
+						"com"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User List",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"sukses bingit\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.status).to.eql('success');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://kasir-api.belajarqa.com/users",
+					"protocol": "https",
+					"host": [
+						"kasir-api",
+						"belajarqa",
+						"com"
+					],
+					"path": [
+						"users"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Pandu",
+							"disabled": true
+						},
+						{
+							"key": "p",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"sukses gaes\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.status).to.eql('success');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Pandu-update\",\r\n    \"email\": \"panduws345@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://kasir-api.belajarqa.com/users/{{userId}}",
+					"protocol": "https",
+					"host": [
+						"kasir-api",
+						"belajarqa",
+						"com"
+					],
+					"path": [
+						"users",
+						"{{userId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Detail",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"sukses gaes\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.status).to.eql('success');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://kasir-api.belajarqa.com/users/{{userId}}",
+					"protocol": "https",
+					"host": [
+						"kasir-api",
+						"belajarqa",
+						"com"
+					],
+					"path": [
+						"users",
+						"{{userId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"mendapat respon yang identik\", function () {\r",
+							"    pm.response.to.have.body({\r",
+							"    \"status\": \"success\",\r",
+							"    \"message\": \"User berhasil dihapus\"\r",
+							"});\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://kasir-api.belajarqa.com/users/{{userId}}",
+					"protocol": "https",
+					"host": [
+						"kasir-api",
+						"belajarqa",
+						"com"
+					],
+					"path": [
+						"users",
+						"{{userId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"sukses refresh tokennya\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Access Token berhasil diperbarui\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.sendRequest\r",
+							"(\r",
+							"{\r",
+							"    url: 'https://kasir-api.belajarqa.com/authentications',\r",
+							"    method: 'POST',\r",
+							"    header: \r",
+							"    {\r",
+							"        'Content-Type': 'application/json'\r",
+							"    },\r",
+							"    body: \r",
+							"    {\r",
+							"        mode: 'raw',\r",
+							"        raw: JSON.stringify\r",
+							"        ({\r",
+							"            email: pm.environment.get('emailAdmin'),\r",
+							"            password: pm.environment.get('passwordAdmin')\r",
+							"        })\r",
+							"    }\r",
+							"}, \r",
+							"function (err, res) \r",
+							"{\r",
+							"    if (err) \r",
+							"    {\r",
+							"        console.error(err);\r",
+							"        return;\r",
+							"    }\r",
+							"    var jsonData = res.json();\r",
+							"    var accessToken = jsonData.data.accessToken;\r",
+							"    \r",
+							"    pm.environment.set(\"accessToken\", accessToken);\r",
+							"    \r",
+							"}\r",
+							");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"refreshToken\": \"{{refreshToken}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://kasir-api.belajarqa.com/authentications",
+					"protocol": "https",
+					"host": [
+						"kasir-api",
+						"belajarqa",
+						"com"
+					],
+					"path": [
+						"authentications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Log Out",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.body({\r",
+							"    \"status\": \"success\",\r",
+							"    \"message\": \"Refresh token berhasil dihapus\"\r",
+							"});\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"refreshToken\": \"{{refreshToken}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://kasir-api.belajarqa.com/authentications",
+					"protocol": "https",
+					"host": [
+						"kasir-api",
+						"belajarqa",
+						"com"
+					],
+					"path": [
+						"authentications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Log Out 2 kali",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.body({\r",
+							"    \"status\": \"fail\",\r",
+							"    \"message\": \"Refresh token tidak valid\"\r",
+							"});\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"refreshToken\": \"{{refreshToken}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://kasir-api.belajarqa.com/authentications",
+					"protocol": "https",
+					"host": [
+						"kasir-api",
+						"belajarqa",
+						"com"
+					],
+					"path": [
+						"authentications"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{accessToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

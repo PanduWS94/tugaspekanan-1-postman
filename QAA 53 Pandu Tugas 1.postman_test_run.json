@@ -1,0 +1,392 @@
+{
+	"id": "0f9cdef7-d41a-4c2c-808f-c3198d2ca8a2",
+	"name": "QAA 53 Pandu Tugas 1",
+	"timestamp": "2024-01-30T14:05:31.852Z",
+	"collection_id": "21402943-a8d4a221-b469-4271-845a-fe8b912a3d59",
+	"folder_id": 0,
+	"environment_id": "21402943-d0a8b28a-4be1-4729-abef-ea4e9aae413d",
+	"totalPass": 20,
+	"delay": "1000",
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2024-01-30T14:05:17.901Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "0c8a97f6-effa-4cd8-9f88-317799901769",
+			"name": "Registration",
+			"url": "https://kasir-api.belajarqa.com/registration",
+			"time": 435,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"Berhasil daftar gaes": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Berhasil daftar gaes": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				435
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"Berhasil daftar gaes": true
+				}
+			]
+		},
+		{
+			"id": "89e6c285-bf4d-4fc1-bed0-d881c6d2b5b2",
+			"name": "Login",
+			"url": "https://kasir-api.belajarqa.com/authentications",
+			"time": 379,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"Dapat status berhasil": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Dapat status berhasil": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				379
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"Dapat status berhasil": true
+				}
+			]
+		},
+		{
+			"id": "731c2be6-13c1-49a7-80ea-ffeb7affc8a3",
+			"name": "Create User",
+			"url": "https://kasir-api.belajarqa.com/users",
+			"time": 370,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"Statusnya Sukses": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Statusnya Sukses": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				370
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"Statusnya Sukses": true
+				}
+			]
+		},
+		{
+			"id": "239fc4d1-4171-424f-be46-c261ec705624",
+			"name": "Get User List",
+			"url": "https://kasir-api.belajarqa.com/users",
+			"time": 66,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"sukses bingit": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"sukses bingit": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				66
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"sukses bingit": true
+				}
+			]
+		},
+		{
+			"id": "60033759-78d7-46db-a587-9282c3909198",
+			"name": "Update User",
+			"url": "https://kasir-api.belajarqa.com/users/bbef98a8-54d8-4589-a821-a8e75a61a9a6",
+			"time": 33,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"sukses gaes": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"sukses gaes": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				33
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"sukses gaes": true
+				}
+			]
+		},
+		{
+			"id": "7f0953bc-8472-4dd4-9f65-5f3da6a22e2f",
+			"name": "Get User Detail",
+			"url": "https://kasir-api.belajarqa.com/users/bbef98a8-54d8-4589-a821-a8e75a61a9a6",
+			"time": 41,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"sukses gaes": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"sukses gaes": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				41
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"sukses gaes": true
+				}
+			]
+		},
+		{
+			"id": "26b62c3c-02d0-4bb4-b5a9-9f2f692f81b7",
+			"name": "Delete User",
+			"url": "https://kasir-api.belajarqa.com/users/bbef98a8-54d8-4589-a821-a8e75a61a9a6",
+			"time": 35,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"mendapat respon yang identik": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"mendapat respon yang identik": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				35
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"mendapat respon yang identik": true
+				}
+			]
+		},
+		{
+			"id": "d7dd3ce2-4fe9-4d3a-8c03-287871ee04fc",
+			"name": "Refresh Token",
+			"url": "https://kasir-api.belajarqa.com/authentications",
+			"time": 138,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"sukses refresh tokennya": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"sukses refresh tokennya": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				138
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"sukses refresh tokennya": true
+				}
+			]
+		},
+		{
+			"id": "20d82af8-cd9c-48e6-92a8-190ab1bda231",
+			"name": "Log Out",
+			"url": "https://kasir-api.belajarqa.com/authentications",
+			"time": 183,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Body is correct": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body is correct": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				183
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Body is correct": true
+				}
+			]
+		},
+		{
+			"id": "e3ffa99b-145e-407c-aab9-1a42c829b250",
+			"name": "Log Out 2 kali",
+			"url": "https://kasir-api.belajarqa.com/authentications",
+			"time": 157,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status code is 400": true,
+				"Body is correct": true
+			},
+			"testPassFailCounts": {
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body is correct": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				157
+			],
+			"allTests": [
+				{
+					"Status code is 400": true,
+					"Body is correct": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 1837,
+	"collection": {
+		"requests": [
+			{
+				"id": "0c8a97f6-effa-4cd8-9f88-317799901769",
+				"method": "POST"
+			},
+			{
+				"id": "89e6c285-bf4d-4fc1-bed0-d881c6d2b5b2",
+				"method": "POST"
+			},
+			{
+				"id": "731c2be6-13c1-49a7-80ea-ffeb7affc8a3",
+				"method": "POST"
+			},
+			{
+				"id": "239fc4d1-4171-424f-be46-c261ec705624",
+				"method": "GET"
+			},
+			{
+				"id": "60033759-78d7-46db-a587-9282c3909198",
+				"method": "PUT"
+			},
+			{
+				"id": "7f0953bc-8472-4dd4-9f65-5f3da6a22e2f",
+				"method": "GET"
+			},
+			{
+				"id": "26b62c3c-02d0-4bb4-b5a9-9f2f692f81b7",
+				"method": "DELETE"
+			},
+			{
+				"id": "d7dd3ce2-4fe9-4d3a-8c03-287871ee04fc",
+				"method": "PUT"
+			},
+			{
+				"id": "20d82af8-cd9c-48e6-92a8-190ab1bda231",
+				"method": "DELETE"
+			},
+			{
+				"id": "e3ffa99b-145e-407c-aab9-1a42c829b250",
+				"method": "DELETE"
+			}
+		]
+	}
+}
